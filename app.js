@@ -20,7 +20,7 @@ headDropdown.addEventListener('change', () => {
     console.log('changing select', headDropdown.value);
     // increment the head change count state
     report++;
-    console.log(report);
+    // console.log(report);
     // update the dom for the head (use style.backgroundImage on the headEl div instead of trying to set the .src -- it's NOT an img tag!)
     headDropdown.style.backgroundImage = `url('.assets/${headDropdown.value}.png')`;
     // update the stats to show the new count (call displayStats() to do this work)
@@ -32,14 +32,17 @@ function.displayStats() {
 
 middleDropdown.addEventListener('change', () => {
     // get the value of the middle dropdown
-
+    console.log('changing select', middleDropdown.value);
     // increment the middle change count state
-    
+    report++;
     // update the dom for the middle (NOTE: use style.backgroundImage on the middleEl div instead of trying to set the .src -- it's NOT an img tag!)
-
+    middleDropdown.style.backgroundImage = `url('.assets/${middleDropdown.value}.png')`;
     // update the stats to show the new count (call displayStats() to do this work)
 });
 
+function.displayStats() {
+    reportEl.textContent = `You have changed the middle $(report) times.`
+}
 
 bottomDropdown.addEventListener('change', () => {
     // get the value of the bottom dropdown
