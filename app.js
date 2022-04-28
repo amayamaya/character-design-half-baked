@@ -11,67 +11,71 @@ const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
 
 // set state for how many times the user changes the head, middle, and bottom
-let report = 0;
+let headReport = 0;
+let middleReport = 0;
+let bottomReport = 0;
 // set state for all of the character's catchphrases
 let catchphrases = [];
 
 headDropdown.addEventListener('change', () => {
     // get the value of the head dropdown
-    console.log('changing select', headDropdown.value);
+    // console.log('changing select', headDropdown.value);
     // increment the head change count state
-    report++;
+    headReport++;
     // console.log(report);
     // update the dom for the head (use style.backgroundImage on the headEl div instead of trying to set the .src -- it's NOT an img tag!)
-    headDropdown.style.backgroundImage = `url('.assets/${headDropdown.value}.png')`;
+    headEl.style.backgroundImage = `url('./assets/${headDropdown.value}-head.png')`;
     // update the stats to show the new count (call displayStats() to do this work)
+    displayStats();
 });
 
-function.displayStats() {
-    reportEl.textContent = `You have changed the head $(report) times.`
-};
 
 middleDropdown.addEventListener('change', () => {
     // get the value of the middle dropdown
-    console.log('changing select', middleDropdown.value);
+    // console.log('changing select', middleDropdown.value);
     // increment the middle change count state
-    report++;
+    middleReport++;
     // update the dom for the middle (NOTE: use style.backgroundImage on the middleEl div instead of trying to set the .src -- it's NOT an img tag!)
-    middleDropdown.style.backgroundImage = `url('.assets/${middleDropdown.value}.png')`;
+    middleEl.style.backgroundImage = `url('./assets/${middleDropdown.value}-middle.png')`;
     // update the stats to show the new count (call displayStats() to do this work)
+    displayStats();
 });
 
-function.displayStats() {
-    reportEl.textContent = `You have changed the middle $(report) times.`
-}
+// function.displayStats() {
+//     reportEl.textContent = `You have changed the middle ${report} times.`
+// };
 
 bottomDropdown.addEventListener('change', () => {
     // get the value of the bottom dropdown
-    console.log('changing select', bottomDropdown.value);
+    // console.log('changing select', bottomDropdown.value);
     // increment the bottom change count state
-    report++;
+    bottomReport++;
     // update the dom for the bottom (NOTE use style.backgroundImage on the bottomEl div instead of trying to set the .src -- it's NOT an img tag!)
-    bottomDropdown.style.backgroundImage = `url('assets/${bottomDropdown.value}.png)`;
+    bottomEl.style.backgroundImage = `url('./assets/${bottomDropdown.value}-pants.png')`;
     // update the stats to show the new count (call displayStats() to do this work)
+    displayStats();
 });
 
-function.displayStats() {
-    reportEl.textContent = `You have changed the bottom $(report) times.`
-}
+// function.displayStats() {
+//     reportEl.textContent = `You have changed the bottom ${report} times.`
+// };
 
 catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
-    
+    catchphrases.push(catchphrasesEl.value);
+    console.log('changing select', catchphrasesEl.value);
     // push the new catchphrase to the catchphrase array in state
 
     // clear out the form input's value so it's empty to the user
    
     // update the dom to show the new catchphrases (refactor to/call displayCatchphrases to do this work)
-
+    displayCatchphrases();
 });
 
 function displayStats() {
-    // text content of the reportEl to tell the user how many times they've changed each piece of the state
+    reportEl.textContent = `You have changed the head ${headReport} times. You have changed the middle ${middleReport} times. You have changed the bottom ${bottomReport} times.`;    // text content of the reportEl to tell the user how many times they've changed each piece of the state
 }
+
 
 function displayCatchphrases() {
     // clear out the DOM for the currently displayed catchphrases
