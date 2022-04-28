@@ -46,13 +46,17 @@ function.displayStats() {
 
 bottomDropdown.addEventListener('change', () => {
     // get the value of the bottom dropdown
-
+    console.log('changing select', bottomDropdown.value);
     // increment the bottom change count state
-    
+    report++;
     // update the dom for the bottom (NOTE use style.backgroundImage on the bottomEl div instead of trying to set the .src -- it's NOT an img tag!)
-
+    bottomDropdown.style.backgroundImage = `url('assets/${bottomDropdown.value}.png)`;
     // update the stats to show the new count (call displayStats() to do this work)
 });
+
+function.displayStats() {
+    reportEl.textContent = `You have changed the bottom $(report) times.`
+}
 
 catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
