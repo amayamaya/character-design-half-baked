@@ -10,6 +10,7 @@ const catchphrasesEl = document.getElementById('catchphrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
 
+
 // set state for how many times the user changes the head, middle, and bottom
 let headReport = 0;
 let middleReport = 0;
@@ -62,8 +63,9 @@ bottomDropdown.addEventListener('change', () => {
 
 catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
-    catchphrases.push(catchphrasesEl.value);
-    console.log('changing select', catchphrasesEl.value);
+    catchphrases.push(catchphraseInput.value);
+    // console.log('changing input', catchphraseInput.value);
+    // console.log(catchphrases);
     // push the new catchphrase to the catchphrase array in state
 
     // clear out the form input's value so it's empty to the user
@@ -76,15 +78,20 @@ function displayStats() {
     reportEl.textContent = `You have changed the head ${headReport} times. You have changed the middle ${middleReport} times. You have changed the bottom ${bottomReport} times.`;    // text content of the reportEl to tell the user how many times they've changed each piece of the state
 }
 
-
 function displayCatchphrases() {
     // clear out the DOM for the currently displayed catchphrases
-
+    catchphrasesEl.textContent = '';
     // loop through each catchphrase in state
+    for (let catchphrase of catchphrases) {
+        const li = document.createElement('div');
+        li.textContent = catchphrase;
+        catchphrasesEl.append(li);
+    }
+}
    
     // and for each catchphrase
     
     // create an HTML element with the catchphrase as its text content
     
     // and append that HTML element to the cleared-out DOM
-}
+
